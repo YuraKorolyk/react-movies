@@ -1,0 +1,10 @@
+.movie {
+  margin: 40px 0;
+  .movieWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+
+}

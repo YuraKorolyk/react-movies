@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Genres = () => {
+const GenresPage = () => {
     return (
         <div>
             Genres
@@ -8,4 +8,4 @@ const Genres = () => {
     );
 };
 
-export default Genres;
+export default GenresPage;
