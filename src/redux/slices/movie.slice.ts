@@ -7,10 +7,7 @@ import {AxiosError} from "axios";
 
 interface IState {
     movies: IMovie[],
-    searchedMovies: IMovie[];
     searchQuery: string;
-    newQuery: string;
-
     totalPages: number,
     currentPage: number,
 }
@@ -18,8 +15,6 @@ interface IState {
 const initialState: IState = {
     movies: [],
     searchQuery: '',
-    newQuery: '',
-    searchedMovies: [],
     totalPages: 500,
     currentPage:  1
 }
@@ -53,30 +48,20 @@ const slice = createSlice({
         changeCurrPage: (state, action) => {
             state.currentPage = action.payload
         },
-        clearSearcherMovies: state => {
-            state.currentPage = 1
-            state.searchedMovies = []
-            state.totalPages = 500
-        },
         setSearchQuery: (state, action) => {
             state.searchQuery = action.payload
         },
-        setTotalPage: (state, action) => {
-            state.totalPages = action.payload
-        },
-        setNewQuery: (state, action) => {
-            state.newQuery = action.payload
-        }
     },
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
                 state.movies = action.payload.results
+                state.totalPages = 500;
                 // state.currentPage = action.payload.page
             })
             .addCase(searchMovies.fulfilled, (state, action) => {
                 const tPage = action.payload.total_pages
-                state.searchedMovies = action.payload.results
+                state.movies = action.payload.results
                 state.totalPages = tPage <=500 ? tPage : 500
             })
 })
@@ -87,7 +72,6 @@ const movieActions = {
     ...actions,
     getAll,
     searchMovies
-    // getGenres
 }
 export {
     movieActions,

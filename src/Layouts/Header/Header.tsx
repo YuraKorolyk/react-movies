@@ -10,16 +10,14 @@ import ThemeSwitcher from "../../UI/ThemeSwitcher/ThemeSwitcher";
 import Search from "../../UI/Search/Search";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../redux";
-// import {searchActions} from "../../redux";
+
 const Header:FC = () => {
     const {currentPage} = useAppSelector(state => state.movieReducer)
     const dispatch = useAppDispatch()
-        const navigate = useNavigate()
+    const navigate = useNavigate()
     const onMoviesClick = () =>  {
-        dispatch(movieActions.clearSearcherMovies())
-        dispatch(movieActions.setSearchQuery(''))
-
-        navigate(`/movies?page=1`)
+        navigate('/movies?page=1')
+        dispatch(movieActions.getAll(1))
     }
 
     return (

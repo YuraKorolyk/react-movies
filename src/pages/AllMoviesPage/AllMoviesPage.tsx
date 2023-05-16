@@ -8,25 +8,24 @@ import Container from "../../Layouts/container/Container";
 import {Link, useLocation} from "react-router-dom";
 
 const AllMoviesPage:FC = () => {
-    const {currentPage, totalPages, searchedMovies, searchQuery} = useAppSelector(state => state.movieReducer)
+    const {totalPages, searchQuery} = useAppSelector(state => state.movieReducer)
     const dispatch = useAppDispatch()
     const location = useLocation()
 
     const searchParams = new URLSearchParams(location.search);
     const pageFromURL = searchParams.get('page');
     const queryFromURL = searchParams.get('query');
-    console.log(queryFromURL)
+
     const page = pageFromURL ? +pageFromURL : 1
-    const query = queryFromURL ? queryFromURL : searchQuery
-    dispatch(movieActions.setSearchQuery(query))
+    // let query = queryFromURL ? queryFromURL : searchQuery
+    // dispatch(movieActions.setSearchQuery(query))
 
 
     useEffect(()=> {
-        dispatch(movieActions.changeCurrPage(page))
-        // searchedMovies.length > 1 || queryFromURL ? dispatch(movieActions.searchMovies([query, currentPage])) : dispatch(movieActions.getAll(page))
-        searchQuery ? dispatch(movieActions.searchMovies([query, page])) : dispatch(movieActions.getAll(page))
-        dispatch(genreActions.getAll())
-    }, [currentPage, query])
+        !queryFromURL && dispatch(movieActions.getAll(page))
+        queryFromURL && dispatch(movieActions.searchMovies([queryFromURL, page]))
+
+    }, [page, queryFromURL])
     return (
         <Container>
             <Movies/>
@@ -39,8 +38,8 @@ const AllMoviesPage:FC = () => {
                         renderItem={(item)=> (
                             <PaginationItem
                                 component={Link}
-                                // to={searchedMovies.length > 1 ? `?query=${searchQuery}&page=${item.page}` : `?page=${item.page}`}
-                                to={query ? `?query=${searchQuery}&page=${item.page}` : `?page=${item.page}`}
+                                // to={query ? `?query=${searchQuery}&page=${item.page}` : `?page=${item.page}`}
+                                to={queryFromURL ? `?query=${queryFromURL}&page=${item.page}` : `?page=${item.page}`}
                                 {...item}
                             />
                         )}

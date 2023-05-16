@@ -5,8 +5,14 @@ import {Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import AllMoviesPage from "./pages/AllMoviesPage/AllMoviesPage";
 import GenresPage from "./pages/GenresPage/GenresPage";
+import {useAppDispatch} from "./hooks";
+import {genreActions} from "./redux";
 
 function App() {
+    const dispatch = useAppDispatch()
+    useEffect(()=> {
+        dispatch(genreActions.getAll())
+    }, [])
   return (
     <div className="App">
         <Header/>
