@@ -1,10 +1,11 @@
 const baseURL  = "https://api.themoviedb.org/3";
 
 const urls = {
-    movie: "/discover/movie",
+    allmovies: "/discover/movie",
     genres: "/genre/movie/list",
     searchMovies: "/search/movie",
-    moviesByGenres: "/discover/movie"
+    moviesByGenres: "/discover/movie",
+    movie: "/movie"
 }
 
 export  {

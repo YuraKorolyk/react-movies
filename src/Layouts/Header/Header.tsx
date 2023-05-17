@@ -36,7 +36,7 @@ const Header:FC = () => {
                 <div className={classes.right}>
                     {/*<div>search</div>*/}
                     <div style={{display: "flex"}}><Search/></div>
-                    <ThemeSwitcher/>
+                    {/*<ThemeSwitcher/>*/}
                     <div className={classes.userIcon}><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=""/></div>
                 </div>
             </Container>

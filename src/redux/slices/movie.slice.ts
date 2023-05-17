@@ -1,4 +1,4 @@
-import {IMovie, IData} from "../../interfaces";
+import {IMovie, IData, IVideo, IVideosData} from "../../interfaces";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {movieService, searchService} from "../../services";
 import {AxiosError} from "axios";
@@ -6,7 +6,7 @@ import {AxiosError} from "axios";
 
 
 interface IState {
-    movies: IMovie[],
+    movies: IMovie[];
     searchQuery: string;
     totalPages: number,
     currentPage: number,
@@ -40,6 +40,17 @@ const searchMovies = createAsyncThunk<IData, [query: string, page: number]>(
             return rejectWithValue(err.response?.data)
         }
     });
+// const getVideo = createAsyncThunk<IVideosData, number>(
+//     'movieSlice/getVideo',
+//     async (id,{rejectWithValue})=>{
+//         try {
+//             const {data} = await movieService.getVideo(id);
+//             return data;
+//         } catch (e) {
+//             const err = e as AxiosError
+//             return rejectWithValue(err.response?.data)
+//         }
+//     });
 
 const slice = createSlice({
     name: 'movieSlice',
@@ -64,6 +75,9 @@ const slice = createSlice({
                 state.movies = action.payload.results
                 state.totalPages = tPage <=500 ? tPage : 500
             })
+            // .addCase(getVideo.fulfilled, (state, action) => {
+            //     state.videos = action.payload.results
+            // })
 })
 
 
@@ -71,7 +85,8 @@ const {actions, reducer: movieReducer} = slice
 const movieActions = {
     ...actions,
     getAll,
-    searchMovies
+    searchMovies,
+    // getVideo
 }
 export {
     movieActions,

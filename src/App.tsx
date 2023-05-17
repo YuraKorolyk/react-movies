@@ -7,6 +7,7 @@ import AllMoviesPage from "./pages/AllMoviesPage/AllMoviesPage";
 import GenresPage from "./pages/GenresPage/GenresPage";
 import {useAppDispatch} from "./hooks";
 import {genreActions} from "./redux";
+import MovieInfoPage from "./pages/MovieInfoPage/MovieInfoPage";
 
 function App() {
     const dispatch = useAppDispatch()
@@ -20,6 +21,7 @@ function App() {
             <Route path={'/'} element={<HomePage/>}/>
             <Route path={'/movies'} element={<AllMoviesPage/>}/>
             <Route path={'/genres'} element={<GenresPage/>}/>
+            <Route path={'/movies/:id'} element={<MovieInfoPage/>}/>
         </Routes>
     </div>
   );
