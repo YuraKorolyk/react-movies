@@ -1,0 +1,39 @@
+@import "src/colors";
+.btn {
+  background: var(--btn-bg);
+  //background: var(--body-color);
+
+  //border-radius: 18px;
+  border-radius: 10px;
+  width: 115px;
+  height: 35px;
+  transition: var(--transition);
+  color: var(--primary-text-color);
+  overflow: hidden;
+  float: left;
+  &:hover {
+    //background: var(--red-color);
+    background: #ff572d;
+  }
+  & label {
+    float: left;
+    width: 100%;
+    height: 100%;
+
+    & span {
+    height: 100%;
+    width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    & input {
+      position: absolute;
+      display: none;
+
+    }
+  }
+}
+.btn input:checked + span {
+  background: var(--red-color);
+}

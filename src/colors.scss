@@ -1,0 +1,21 @@
+:root {
+  --transition: .2s;
+  --secondary-text-color: rgb(140, 140, 140);
+  --primary-text-color: rgb(255, 255, 255);
+  --header-bg: rgba(11, 10, 12, 0.5);
+  --body-color: rgb(22, 21, 26);
+  --filters-modal-bg: rgba(22, 21, 26, .95);
+  --btn-bg: rgb(30, 29, 34);
+  --red-color: #f30;
+
+}
+.light {
+  --secondary-text-color: rgb(38, 38, 38);
+  --primary-text-color: rgb(16, 16, 16);
+  --header-bg: rgb(225, 225, 225);
+  --body-color: rgb(242, 242, 242);
+  --filters-modal-bg: rgba(242, 242, 242, .95);
+  --btn-bg: rgb(180, 180, 180);
+  //--btn-bg: rgb(197, 197, 197);
+}
+

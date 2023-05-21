@@ -1,0 +1,32 @@
+@import "src/colors";
+
+.moviesWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+.sliderCategory {
+  position: relative;
+  .sliderTitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--primary-text-color);
+    margin-bottom: 15px;
+  }
+}
+.slide {
+    height: 650px !important;
+    display: flex !important;
+    align-items: center !important;
+
+}
+.slideImg {
+  width: 100%;
+}
+.skeletonWrapper {
+  display: flex;
+  justify-content: center;
+}

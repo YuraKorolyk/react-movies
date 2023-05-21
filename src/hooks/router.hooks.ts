@@ -4,7 +4,7 @@ interface IState<T> extends Location {
     state: T
 }
 
-const useAppLocation = <K>(): IState<K> => useLocation();
+const useAppLocation = <T>(): IState<T> => useLocation();
 
 
 export {

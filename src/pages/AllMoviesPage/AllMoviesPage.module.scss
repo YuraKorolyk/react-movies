@@ -1,5 +1,19 @@
+@import "src/colors";
 .pagination {
   display: flex;
   justify-content: center;
   padding-bottom: 50px;
+  & nav {
+    & ul {
+      & li {
+        & a {
+          color: var(--secondary-text-color);
+          //background: var(--primary-text-color);
+        }
+        & div {
+          color: var(--secondary-text-color);
+        }
+      }
+    }
+  }
 }

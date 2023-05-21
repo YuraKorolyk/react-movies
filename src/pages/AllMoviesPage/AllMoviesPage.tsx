@@ -15,34 +15,50 @@ const AllMoviesPage:FC = () => {
     const searchParams = new URLSearchParams(location.search);
     const pageFromURL = searchParams.get('page');
     const queryFromURL = searchParams.get('query');
-
+    const genresFromURL = searchParams.get('with_genres');
     const page = pageFromURL ? +pageFromURL : 1
     // let query = queryFromURL ? queryFromURL : searchQuery
     // dispatch(movieActions.setSearchQuery(query))
 
 
     useEffect(()=> {
-        !queryFromURL && dispatch(movieActions.getAll(page))
-        queryFromURL && dispatch(movieActions.searchMovies([queryFromURL, page]))
+        if (queryFromURL) {
+            dispatch(movieActions.searchMovies([queryFromURL, page]))
+        } else if (genresFromURL) {
+            dispatch(movieActions.getFilteredMovies(`?with_genres=${genresFromURL}&page=${page}`))
+        } else {
+            dispatch(movieActions.getAll(page))
+        }
 
-    }, [page, queryFromURL])
+
+    }, [page, queryFromURL, genresFromURL])
+
+    const setUrl = (item: {page: number | null}) => {
+        if (queryFromURL) {
+            return `/movies?page=${item.page}&query=${queryFromURL}`
+        } else if (genresFromURL) {
+            return `/movies?page=${item.page}&with_genres=${genresFromURL}`
+        } else {
+            return `/movies?page=${item.page}`
+
+        }
+    }
     return (
         <Container>
             <Movies/>
             <div className={classes.pagination}>
                 {<Pagination
-                        count={totalPages}
-                        page={page}
-                        onChange={(_, num) => dispatch(movieActions.changeCurrPage(num))}
-                        size={"large"}
-                        renderItem={(item)=> (
-                            <PaginationItem
-                                component={Link}
-                                // to={query ? `?query=${searchQuery}&page=${item.page}` : `?page=${item.page}`}
-                                to={queryFromURL ? `?query=${queryFromURL}&page=${item.page}` : `?page=${item.page}`}
-                                {...item}
-                            />
-                        )}
+                    count={totalPages}
+                    page={page}
+                    onChange={(_, num) => dispatch(movieActions.changeCurrPage(num))}
+                    size={"large"}
+                    renderItem={(item)=> (
+                        <PaginationItem
+                            component={Link}
+                            to={setUrl(item)}
+                            {...item}
+                        />
+                    )}
                     />
                 }
             </div>

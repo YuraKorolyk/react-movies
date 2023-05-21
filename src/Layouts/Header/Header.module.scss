@@ -1,3 +1,6 @@
+//@use '../../App' ;
+@import 'src/colors';
+
 .header {
     /*display: flex;*/
     /*justify-content: space-between;*/
@@ -5,8 +8,10 @@
     //width: 100%;
     //top: 0;
     //z-index: 10;
-    background: gray;
-
+    background: var(--header-bg);
+    transition: var(--transition);
+    position: relative;
+    z-index: 4;
 }
 .headerInner {
     display: flex;
@@ -18,41 +23,46 @@
     display: flex;
     align-items: center;
     & div {
-        font-size: 24px;
+        font-size: 26px;
         & a {
-            color: white;
+            transition: var(--transition);
+            color: var(--primary-text-color);
         }
     }
     & nav {
-        margin-left: 20px;
+        margin-left: 60px;
         & li {
-            margin-right: 13px;
+            margin-right: 30px;
+            font-size: 16px;
+            transition: var(--transition);
+            color: var(--secondary-text-color);
+            cursor: pointer;
             &:last-child {
                 margin: 0;
             }
+            &:hover, {
+                color: var(--primary-text-color);
+            }
+            &.active {
+                color: var(--primary-text-color);
+                a {
+                    color: var(--primary-text-color);
+                }
+            }
             & a {
-                color: aliceblue;
+                transition: var(--transition);
+                color: var(--secondary-text-color);
                 position: relative;
                 display: flex;
                 align-items: center;
+
+                &:hover, {
+                    color: var(--primary-text-color);
+                }
                 & span {
                     margin-left: 5px;
                 }
-                &:after {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    bottom: -3px;
-                    width: 0;
-                    height: 2px;
-                    background: #fff;
-                    transition: .2s;
-                }
-                &:hover {
-                    &:after {
-                        width: 100%;
-                    }
-                }
+
             }
         }
     }
@@ -64,15 +74,9 @@
     &:last-child {
         margin: 0;
     }
-    .userIcon {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        & img {
-            width: 100%;
-            height: 100%;
-        }
-
+    .themeSwitcher {
+        cursor: pointer;
+        margin-right: 30px;
     }
 }
 .list {

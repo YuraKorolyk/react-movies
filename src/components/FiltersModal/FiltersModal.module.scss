@@ -1,0 +1,39 @@
+@import "src/colors";
+.filtersModal {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  //height: 300px;
+  top: 60px;
+  left: 0;
+  padding-top: 0px;
+  background: var(--filters-modal-bg);
+  z-index: 0;
+  transition: var(--transition);
+  overflow: hidden;
+  .genresWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    justify-content: center;
+  }
+  .formBtn {
+    display: flex;
+    justify-content: center;
+    button {
+      width: 100px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+  }
+  &.active {
+    padding-top: 30px;
+    //top: 60px;
+    height: 300px;
+  }
+}
+

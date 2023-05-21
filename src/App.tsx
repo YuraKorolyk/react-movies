@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import './App.scss';
 import Header from './Layouts/Header/Header';
 import {Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
@@ -20,7 +20,7 @@ function App() {
         <Routes>
             <Route path={'/'} element={<HomePage/>}/>
             <Route path={'/movies'} element={<AllMoviesPage/>}/>
-            <Route path={'/genres'} element={<GenresPage/>}/>
+            {/*<Route path={'/genres'} element={<GenresPage/>}/>*/}
             <Route path={'/movies/:id'} element={<MovieInfoPage/>}/>
         </Routes>
     </div>
