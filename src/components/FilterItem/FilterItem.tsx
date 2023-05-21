@@ -6,7 +6,7 @@ interface IProps {
     name: string;
     id: number;
     register: UseFormRegister<FieldValues>;
-    // onValidate: any;
+
 }
 const FilterItem:FC<IProps> = ({children, name, id,register}) => {
     const onValidate = (value: boolean | string, formValues:Record<string, string | boolean>) => {
@@ -25,7 +25,6 @@ const FilterItem:FC<IProps> = ({children, name, id,register}) => {
                 <span>{children}</span>
             </label>
         </div>
-        // <button className={classes.btn}>{children}</button>
     );
 };
 

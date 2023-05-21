@@ -1,7 +1,6 @@
 import React, {FC, useEffect} from 'react';
 import Container from "../../Layouts/container/Container";
 import classes from './HomePage.module.scss'
-
 import { Navigation, Pagination, Scrollbar, Autoplay, EffectFade } from 'swiper';
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'

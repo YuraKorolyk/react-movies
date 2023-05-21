@@ -1,9 +1,6 @@
 @import "src/colors";
 .btn {
   background: var(--btn-bg);
-  //background: var(--body-color);
-
-  //border-radius: 18px;
   border-radius: 10px;
   width: 115px;
   height: 35px;
@@ -12,14 +9,12 @@
   overflow: hidden;
   float: left;
   &:hover {
-    //background: var(--red-color);
     background: #ff572d;
   }
   & label {
     float: left;
     width: 100%;
     height: 100%;
-
     & span {
     height: 100%;
     width: 100%;
@@ -30,7 +25,6 @@
     & input {
       position: absolute;
       display: none;
-
     }
   }
 }

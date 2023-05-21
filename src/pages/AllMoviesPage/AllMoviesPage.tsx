@@ -17,8 +17,6 @@ const AllMoviesPage:FC = () => {
     const queryFromURL = searchParams.get('query');
     const genresFromURL = searchParams.get('with_genres');
     const page = pageFromURL ? +pageFromURL : 1
-    // let query = queryFromURL ? queryFromURL : searchQuery
-    // dispatch(movieActions.setSearchQuery(query))
 
 
     useEffect(()=> {

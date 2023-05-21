@@ -3,10 +3,6 @@ import {Link, useNavigate} from "react-router-dom";
 import classes from './Header.module.scss'
 import '../container/Container.scss'
 import Container from "../container/Container";
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import MovieCreationRoundedIcon from '@mui/icons-material/MovieCreationRounded';
-import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
-import ThemeSwitcher from "../../UI/ThemeSwitcher/ThemeSwitcher";
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import Search from "../../UI/Search/Search";
@@ -24,10 +20,14 @@ const Header:FC = () => {
         dispatch(movieActions.getAll(1))
         setMoviesActive(true)
         setHomeActive(false)
+        localStorage.setItem('isHomeActive', 'false')
+        localStorage.setItem('isMoviesActive', 'true')
     }
     const onHomeClick = () => {
         setHomeActive(true)
         setMoviesActive(false)
+        localStorage.setItem('isHomeActive', 'true')
+        localStorage.setItem('isMoviesActive', 'false')
     }
 
     const [lightTheme, setLightTheme] = useState<boolean>(false)
@@ -36,6 +36,12 @@ const Header:FC = () => {
     const [genresActive, setGenresActive] = useState<boolean>(false)
 
     useEffect(()=>{
+        const isHomeActive: boolean = localStorage.getItem('isHomeActive') === 'true' ? true : false
+        const isMoviesActive: boolean = localStorage.getItem('isMoviesActive') === 'true' ? true : false
+        setHomeActive(isHomeActive);
+        setMoviesActive(isMoviesActive)
+
+
         const localTheme: boolean = localStorage.getItem('lightTheme') === 'true' ? true : false
         setLightTheme(localTheme)
         localTheme ? document.body.classList.add('light') : document.body.classList.remove('light')
@@ -52,7 +58,7 @@ const Header:FC = () => {
         <header className={classes.header}>
             <Container className={classes.headerInner}>
                 <div className={classes.left}>
-                    <div><Link to={'/'}>LOGO</Link></div>
+                    <div><Link to={'/'}>TheMovies</Link></div>
                     <nav>
                         <ul className={classes.list}>
                             <li onClick={onHomeClick} className={homeActive ? classes.active : ''}><Link to={'/'}>Home</Link></li>
@@ -63,9 +69,7 @@ const Header:FC = () => {
 
                 </div>
                 <div className={classes.right}>
-                    {/*<div>search</div>*/}
                     <div style={{display: "flex"}}><Search/></div>
-                    {/*<ThemeSwitcher/>*/}
                     <div className={classes.themeSwitcher} onClick={onThemeClick}>{!lightTheme ?
                         <WbSunnyOutlinedIcon sx={{color: 'rgb(140, 140, 140)', fontSize: 30}}/> :
                         <DarkModeOutlinedIcon sx={{color: 'rgb(38, 38, 38)', fontSize: 30}}/>}
@@ -74,7 +78,6 @@ const Header:FC = () => {
                 </div>
             </Container>
             <FiltersModal isActive={genresActive}/>
-            {/*{genresActive && <FiltersModal/>}*/}
         </header>
     );
 };

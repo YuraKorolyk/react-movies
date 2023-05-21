@@ -1,9 +1,8 @@
 import {axiosService} from "./axios.service";
 import {IRes} from "../types";
 import {urls} from "../constants";
-import {IData} from "../interfaces";
+import {IData, IReview, IReviewsData} from "../interfaces";
 import {IVideosData} from "../interfaces";
-
 
 const movieService = {
     getAll: (page:number = 1):IRes<IData> => axiosService.get(`${urls.allmovies}?page=${page}`),
@@ -13,6 +12,8 @@ const movieService = {
     getTopRatedMovies: ():IRes<IData> => axiosService.get(`${urls.movie}/top_rated`),
     getNowPlayingMovies: ():IRes<IData> => axiosService.get(`${urls.movie}/now_playing`),
     getUpcomingMovies: ():IRes<IData> => axiosService.get(`${urls.movie}/upcoming`),
+    getRecommendMovies: (id: number):IRes<IData> => axiosService.get(`${urls.movie}/${id}/recommendations`),
+    getReviews: (id: number): IRes<IReviewsData> => axiosService.get(`${urls.movie}/${id}/reviews`)
 }
 
 export {

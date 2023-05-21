@@ -6,12 +6,12 @@ import {AxiosError} from "axios";
 interface IState {
     movies: IMovie[];
     searchQuery: string;
-    totalPages: number,
-    currentPage: number,
+    totalPages: number;
+    currentPage: number;
     popularMovies: IMovie[];
     upcomingMovies: IMovie[];
     nowPlayingMovies: IMovie[];
-    topRatedMovies: IMovie[]
+    topRatedMovies: IMovie[];
 }
 
 const initialState: IState = {
@@ -102,6 +102,7 @@ const getUpcomingMovies = createAsyncThunk<IData>(
         }
     });
 
+
 const slice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -153,7 +154,7 @@ const movieActions = {
     getPopularMovies,
     getTopRatedMovies,
     getUpcomingMovies,
-    getNowPlayingMovies
+    getNowPlayingMovies,
 }
 export {
     movieActions,

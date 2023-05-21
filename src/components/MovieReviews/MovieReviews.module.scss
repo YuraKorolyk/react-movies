@@ -1,0 +1,10 @@
+@import "src/colors";
+.reviewsWrapper {
+  padding-bottom: 40px;
+    h2 {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--primary-text-color);
+      margin-bottom: 15px;
+    }
+}

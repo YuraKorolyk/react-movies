@@ -21,6 +21,12 @@
       z-index: 2;
       transition: .2s;
     }
+    .error {
+      width: 230px;
+      border-radius: 8px;
+      height: 345px;
+      background: var(--secondary-text-color);
+    }
     & img {
       border-radius: 8px;
       max-width: 100%;

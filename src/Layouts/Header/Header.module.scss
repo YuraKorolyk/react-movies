@@ -1,13 +1,6 @@
-//@use '../../App' ;
 @import 'src/colors';
 
 .header {
-    /*display: flex;*/
-    /*justify-content: space-between;*/
-    //position: fixed;
-    //width: 100%;
-    //top: 0;
-    //z-index: 10;
     background: var(--header-bg);
     transition: var(--transition);
     position: relative;

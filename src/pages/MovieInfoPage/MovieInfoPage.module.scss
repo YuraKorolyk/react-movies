@@ -1,0 +1,12 @@
+@import "src/colors";
+.sliderCategory {
+  position: relative;
+  margin-top: 60px;
+  margin-bottom: 50px;
+  .sliderTitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--primary-text-color);
+    margin-bottom: 15px;
+  }
+}
