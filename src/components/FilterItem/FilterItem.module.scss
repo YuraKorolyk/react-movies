@@ -8,6 +8,7 @@
   color: var(--primary-text-color);
   overflow: hidden;
   float: left;
+  cursor: pointer;
   &:hover {
     background: #ff572d;
   }
@@ -15,6 +16,7 @@
     float: left;
     width: 100%;
     height: 100%;
+    cursor: pointer;
     & span {
     height: 100%;
     width: 100%;
